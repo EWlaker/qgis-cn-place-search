@@ -34,12 +34,22 @@ DEFAULT_MAX_FALLBACK = 6      # 容错时最多再试几次
 
 
 def _http_json(url, timeout=TIMEOUT):
+    """发起 HTTP 请求并解析 JSON。
+
+    只允许 http / https：调用方传的都是硬编码的 https 接口地址，这里再校验一次，
+    避免 urlopen 接受 file: 之类的意外 scheme。
+    """
+    scheme = urllib.parse.urlparse(url).scheme.lower()
+    if scheme not in ("http", "https"):
+        raise ValueError("仅支持 http/https，收到: %s" % (scheme or "(空)"))
+
     req = urllib.request.Request(url, headers={
         "User-Agent": USER_AGENT,
         "Accept": "application/json, text/plain, */*",
         "X-Requested-With": "XMLHttpRequest",
     })
-    with urllib.request.urlopen(req, timeout=timeout) as resp:
+    # 上方已校验 scheme 只可能是 http/https
+    with urllib.request.urlopen(req, timeout=timeout) as resp:  # nosec B310
         return json.loads(resp.read().decode("utf-8", "ignore"))
 
 
@@ -156,7 +166,8 @@ def coord_from_geometry(node):
             for x in item:
                 if isinstance(x, (list, tuple)):
                     stack.append(x)
-    except Exception:
+    # 几何字段结构不固定，解析失败即视为无坐标
+    except Exception:  # nosec B110
         pass
     return None
 

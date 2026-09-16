@@ -32,20 +32,28 @@ def _info_level():
 
 
 def log(message):
-    """写入 QGIS 日志面板（标签：中国地名搜索），失败静默"""
+    """写入 QGIS 日志面板（标签：中国地名搜索）。
+
+    日志写失败（比如面板还没就绪）不该影响插件功能，因此刻意忽略。
+    """
     try:
         QgsMessageLog.logMessage(str(message), LOG_TAG, _info_level())
-    except Exception:
+    # 写日志失败不影响功能，故意忽略
+    except Exception:  # nosec B110
         pass
 
 
 def tianditu_key():
-    """取天地图 Key：QGIS 设置优先，其次环境变量，都没有返回空串"""
+    """取天地图 Key：QGIS 设置优先，其次环境变量，都没有返回空串
+
+    读取 QGIS 设置失败（比如配置项类型异常）时，直接回退到环境变量。
+    """
     try:
         value = QgsSettings().value(TK_SETTING_KEY, "")
         if value:
             return str(value).strip()
-    except Exception:
+    # 读设置失败即回退环境变量，故意忽略
+    except Exception:  # nosec B110
         pass
     return (os.environ.get(TK_ENV_VAR) or "").strip()
 

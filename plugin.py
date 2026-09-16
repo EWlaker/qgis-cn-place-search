@@ -54,10 +54,13 @@ class CnPlaceSearchPlugin(object):
                    % config.tianditu_key_hint())
 
     def unload(self):
+        # 注销滤镜：QGIS 会接管滤镜对象的所有权，重复注销或对象已被回收都可能抛异常，
+        # 但卸载流程不该因此中断，所以刻意忽略。
         for locator_filter in self.filters:
             try:
                 self.iface.deregisterLocatorFilter(locator_filter)
-            except Exception:
+            # 对象可能已被回收，忽略即可
+            except Exception:  # nosec B110
                 pass
         self.filters = []
 
@@ -65,7 +68,8 @@ class CnPlaceSearchPlugin(object):
             if action is not None:
                 try:
                     self.iface.removePluginMenu(MENU_NAME, action)
-                except Exception:
+                # 菜单项可能已被移除，忽略即可
+                except Exception:  # nosec B110
                     pass
         self.action_settings = None
         self.action_about = None
