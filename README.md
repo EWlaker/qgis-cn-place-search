@@ -305,12 +305,22 @@ flowchart LR
 
 ### 方式一：从 ZIP 安装（推荐）
 
-1. 下载本仓库，把**仓库内容**打包成 zip
+**直接下载打包好的** —— 见 [**Releases**](https://github.com/EWlaker/qgis-cn-place-search/releases/latest)：
 
-   > ⚠️ `metadata.txt` 必须在 **zip 的根目录**，不能是 `qgis-cn-place-search/metadata.txt` 这种多一层
+```
+qgis_cn_place_search-1.0.0.zip      115 KB
+```
 
-2. QGIS → **插件 → 管理并安装插件 → 从 ZIP 安装**
-3. 在「已安装」里勾选 **中国地名搜索**
+下载后：QGIS → **插件 → 管理并安装插件 → 从 ZIP 安装** → 勾选启用。
+
+<details>
+<summary>也可以自己从仓库打包</summary>
+
+把**仓库内容**打包成 zip，注意：
+
+> ⚠️ `metadata.txt` 必须在 **zip 的根目录**，不能是 `qgis-cn-place-search/metadata.txt` 这种多一层；如果要指定安装后的目录名，就在 zip 里套一层 `qgis_cn_place_search/`（下划线）。
+
+</details>
 
 ### 方式二：手动拷贝
 
