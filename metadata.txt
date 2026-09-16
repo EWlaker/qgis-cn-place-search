@@ -7,8 +7,8 @@ about=<b>中国地名搜索</b> — 在 QGIS 定位器里输入地名，回车�
 　 标准地名库，带来地名来历、含义、历史沿革。无需 Key。<br>
 ② <b>天地图 · 地名搜索 V2.0</b>（<code>tdt</code> 前缀，如 <code>tdt 医院</code>）<br>
 　 全量 POI（地名 + 机构 + 商铺），在当前地图视野内搜索。需要天地图 Key。<br><br>
-<b>容错：</b>搜不到时会自动尝试同音字（如「框河镇」→「匡河镇」），也可直接输入拼音（<code>kuanghezhen</code>）。<br><br>
-<b>定位：</b>选中结果后地图飞过去，并在「地名搜索结果」图层落点，多次搜索累积。<br><br>
+<b>容错：</b>搜不到时会自动尝试同音字（如「外摊」→「外滩」），也可直接输入拼音（<code>waitan</code>）。<br><br>
+<b>定位：</b>选中结果后地图飞过去，并在「地名搜索结果」图层落点；该图层是内存图层，可用「缩放到要素」跳回，多次搜索累积，不会写入你的数据。<br><br>
 数据来源：民政部区划地名司 · 中国国家地名信息库（dmfw.mca.gov.cn）；天地图 Web 服务 API（api.tianditu.gov.cn）。
 version=1.0.0
 qgisMinimumVersion=3.22
@@ -17,9 +17,15 @@ supportsQt6=True
 author=EWlaker
 email=EWlaker@users.noreply.github.com
 category=Plugins
-tags=locator,地名,geocoding,search,china,民政部,天地图
+tags=locator,geocoding,search,china,tianditu,place name
 homepage=https://github.com/EWlaker/qgis-cn-place-search
 repository=https://github.com/EWlaker/qgis-cn-place-search
 tracker=https://github.com/EWlaker/qgis-cn-place-search/issues
+icon=icon.png
 experimental=False
 deprecated=False
+changelog=1.0.0 (2026-09-16)
+    首个版本。双数据源地名搜索定位：民政部国家地名信息库 + 天地图 POI。
+    支持同音字容错（逐位轮转候选，外摊 → 外滩）与拼音搜索（waitan）。
+    结果落在内存点图层，可用「缩放到要素」跳回，多次搜索累积。
+    天地图 Key 从 QGIS 设置或环境变量读取，代码内不含任何 Key。
