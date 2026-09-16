@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# QGIS 打包产物
+*.zip
+*.qgs~
+*.qgz~
+
+# 本地配置（可能含 Key，绝不入库）
+local_settings.*
+settings.local.*
+.env
+.env.*
+*.token
+secrets.*
+
+# 编辑器 / 系统
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+*.bak
+*.tmp
+*.log
