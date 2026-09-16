@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 中国地名搜索插件图标 —— 由 tools/build_icon.py 生成，勿手改 -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#5FAE64"/>
+      <stop offset="1" stop-color="#2C7A45"/>
+    </linearGradient>
+  </defs>
+  <rect x="0" y="0" width="256" height="256" rx="56.32" ry="56.32" fill="url(#bg)"/>
+  <g fill="none" stroke="#FFFFFF" stroke-linecap="round">
+    <path d="M145.88 143.32 L204.8 204.8" stroke-width="24.32"/>
+    <circle cx="112.64" cy="110.08" r="65.28" stroke-width="18.43"/>
+  </g>
+  <g fill="#E5484D">
+    <circle cx="112.64" cy="98.56" r="18.43"/>
+    <polygon points="99.00,108.70 126.28,108.70 112.64,135.42"/>
+  </g>
+  <circle cx="112.64" cy="98.56" r="7.68" fill="#FFFFFF"/>
+</svg>

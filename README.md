@@ -1,5 +1,7 @@
 # 中国地名搜索 · QGIS 插件
 
+<img src="icon-128.png" width="88" align="right" alt="插件图标：绿色圆角底，白色放大镜，镜中一枚红色定位针">
+
 > 在 QGIS 定位器（<kbd>Ctrl</kbd>+<kbd>K</kbd>）里输入中国地名，回车即飞到位。
 > 双数据源 · 同音字容错 · 拼音搜索 · 结果落点。
 
